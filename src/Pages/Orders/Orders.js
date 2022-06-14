@@ -34,9 +34,9 @@ const Orders = () => {
         <div className='w-50 mx-auto'>
         <h2>Your orders: {orders.length}</h2>
         {
-            orders.map(order =>
-            <div key={order._id}>
-                <p>{order.email} : {order.service}</p>
+            orders.map(orders =>
+            <div key={orders._id}>
+                <p>{orders.email} : {orders.service}</p>
             </div>)
         }
     </div>
