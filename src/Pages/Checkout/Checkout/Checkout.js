@@ -22,7 +22,7 @@ const Checkout = () => {
             address: event.target.address.value,
             phone: event.target.phone.value
         }
-        axios.post('http://localhost:5000/orders', orders)
+        axios.post('https://powerful-bastion-09933.herokuapp.com/orders', orders)
         .then(response => {
             const {data} = response;
             if(data.insertedId){
