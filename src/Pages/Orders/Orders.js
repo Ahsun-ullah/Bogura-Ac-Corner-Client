@@ -12,7 +12,7 @@ const Orders = () => {
     useEffect( () =>  {
 
         const getOrders = async() => {
-            const email = user.email;
+            const email = user?.email;
             const url = `https://powerful-bastion-09933.herokuapp.com/orders?email=${email}`;
             try{
                 const {data} = await axiosPrivate.get(url);
@@ -27,13 +27,19 @@ const Orders = () => {
             }
         }
             getOrders();
+
+
     }, [user])
     return (
-        <div>
-            <h2>
-                Your Orders: {orders.length}
-            </h2>
-        </div>
+        <div className='w-50 mx-auto'>
+        <h2>Your orders: {orders.length}</h2>
+        {
+            orders.map(order =>
+            <div key={order._id}>
+                <p>{order.email} : {order.service}</p>
+            </div>)
+        }
+    </div>
     );
 };
 
