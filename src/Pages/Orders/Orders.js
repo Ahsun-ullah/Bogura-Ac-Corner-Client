@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { signOut } from 'firebase/auth';
-import { Navigate } from 'react-router';
+import { useNavigate } from 'react-router';
 import axiosPrivate from '../../Api/AxiosPrivate';
 
 const Orders = () => {
     const [user] = useAuthState(auth);
     const [orders, setOrders] = useState([]);
+    const navigate = useNavigate();
     useEffect( () =>  {
 
         const getOrders = async() => {
@@ -21,7 +22,7 @@ const Orders = () => {
                 console.log(error.message);
                 if(error.response.status === 401 || error.response.status === 403){
                     signOut(auth);
-                    Navigate('/login')
+                    navigate('/login')
                 }
             }
         }
