@@ -1,18 +1,16 @@
-import React from 'react';
-import PageTitle from '../../Shared/PageTitle/PageTitle';
-import Banner from '../Banner/Banner';
-import Experts from '../Experts/Experts';
-import Services from '../Services/Services';
+import React from "react";
+import Banner from "../Banner/Banner";
+import Owners from "../Owners/Owners";
+import Products from "../Products/Products";
 
 const Home = () => {
-    return (
-        <>
-            <PageTitle title="Home"></PageTitle>
-            <Banner></Banner>
-            <Services></Services>
-            <Experts></Experts>
-        </>
-    );
+  return (
+    <div className="mx-5">
+      <Banner></Banner>
+      <Products></Products>
+      <Owners></Owners>
+    </div>
+  );
 };
 
 export default Home;

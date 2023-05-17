@@ -1,16 +1,17 @@
-import { signOut } from 'firebase/auth'
-import React from 'react'
-import { Container, Nav, Navbar } from 'react-bootstrap'
-import { useAuthState } from 'react-firebase-hooks/auth'
-import { Link } from 'react-router-dom'
-import auth from '../../../firebase.init'
+import { signOut } from "firebase/auth";
+import React from "react";
+import { Nav, Navbar } from "react-bootstrap";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { Link } from "react-router-dom";
+import auth from "../../../firebase.init";
+import { UimSignOutAlt } from "@iconscout/react-unicons-monochrome";
 
 const Header = () => {
-  const [user] = useAuthState(auth)
+  const [user] = useAuthState(auth);
 
   const handleSignOut = () => {
-    signOut(auth)
-  }
+    signOut(auth);
+  };
 
   return (
     <>
@@ -20,21 +21,28 @@ const Header = () => {
         sticky="top"
         bg="primary"
         variant="dark"
+        role="navigation"
       >
-        <Container>
-          <Navbar.Brand as={Link} to="/">
+        <div className="container">
+          {/*---------------- navbar Name----------------- */}
+
+          <div className="pe-4">
             <h3>
               Bogura <span className="text-danger">AC</span> Corner
             </h3>
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="me-auto">
+          </div>
+
+          <Navbar.Toggle aria-controls="responsive-navbar-nav " />
+          <Navbar.Collapse className="flex justify-content-between row ms-1 ">
+            {/*---------------- Navbar default Items----------------- */}
+
+            <Nav className="flex-row gap-3 col justify-content-start">
               <Nav.Link href="home">Home</Nav.Link>
-              <Nav.Link href="home#services">Services</Nav.Link>
-              <Nav.Link href="home#experts">Experts</Nav.Link>
+              <Nav.Link href="home#products">Products</Nav.Link>
+              <Nav.Link href="home#owners">Owners</Nav.Link>
             </Nav>
-            <Nav>
+            {/*---------------- Navbar user Items----------------- */}
+            <Nav className="flex-row gap-3 col justify-content-end">
               <Nav.Link as={Link} to="about">
                 About
               </Nav.Link>
@@ -53,10 +61,13 @@ const Header = () => {
               )}
               {user ? (
                 <button
-                  className="btn btn-link text-white text-decoration-none"
+                  className="btn btn-link shadow-lg rounded-circle"
                   onClick={handleSignOut}
                 >
-                  sign out
+                  <UimSignOutAlt
+                    className="btn-primary rounded-circle"
+                    size="32px"
+                  />
                 </button>
               ) : (
                 <Nav.Link as={Link} to="login">
@@ -65,10 +76,10 @@ const Header = () => {
               )}
             </Nav>
           </Navbar.Collapse>
-        </Container>
+        </div>
       </Navbar>
     </>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

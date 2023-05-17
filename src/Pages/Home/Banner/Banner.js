@@ -1,23 +1,28 @@
-import React, { useState } from 'react'
-import { Carousel } from 'react-bootstrap'
+import React, { useState } from "react";
+import { Carousel } from "react-bootstrap";
 
-import banner1 from '../../../images/banner/banner8.jpg'
-import banner2 from '../../../images/banner/banner7.jpg'
-import banner3 from '../../../images/banner/banner 3.jpg'
+import banner1 from "../../../images/banner/banner1.jpg";
+import banner2 from "../../../images/banner/banner_2.jpg";
+import banner3 from "../../../images/banner/banner_3.jpg";
 
 const Banner = () => {
-  const [index, setIndex] = useState(0)
+  const [index, setIndex] = useState(0);
 
   const handleSelect = (selectedIndex, e) => {
-    setIndex(selectedIndex)
-  }
+    setIndex(selectedIndex);
+  };
   return (
     <Carousel activeIndex={index} onSelect={handleSelect}>
       <Carousel.Item>
         <img className="d-block w-100" src={banner1} alt="First slide" />
         <Carousel.Caption>
-          <h3>Our boss working with a toy for repairing</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          <h5 className=" text-center text-danger bg-body align-items-center rounded pb-1 w-75">
+            Our boss working with a toy for repair
+          </h5>
+          <p className="text-primary bg-transparent ">
+            We are provide AC servicing for cars, micros etc. Our vision to
+            provide a qualityful AC servicing.{" "}
+          </p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
@@ -39,7 +44,7 @@ const Banner = () => {
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
-  )
-}
+  );
+};
 
-export default Banner
+export default Banner;
