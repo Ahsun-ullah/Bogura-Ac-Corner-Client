@@ -6,7 +6,7 @@ const AddProduct = () => {
 
   const handelAddProduct = (event) => {
     event.preventDefault();
-    const url = `http://localhost:5000/service`;
+    const url = `https://bogura-ac-corner-server.vercel.app/service`;
     fetch(url, {
       method: "POST",
       headers: {
@@ -18,8 +18,6 @@ const AddProduct = () => {
       .then((result) => {
         setProducts(result);
       });
-
-      
   };
 
   return (

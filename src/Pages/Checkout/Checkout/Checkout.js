@@ -1,18 +1,18 @@
-import React from 'react'
-import { useParams } from 'react-router'
-import useServiceDetail from '../../../hooks/useServiceDetail'
-import { useAuthState } from 'react-firebase-hooks/auth'
-import auth from '../../../firebase.init'
-import axios from 'axios'
-import { toast } from 'react-toastify'
+import React from "react";
+import { useParams } from "react-router";
+import useServiceDetail from "../../../hooks/useServiceDetail";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../../firebase.init";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const Checkout = () => {
-  const { serviceId } = useParams()
-  const [service] = useServiceDetail(serviceId)
-  const [user] = useAuthState(auth)
+  const { serviceId } = useParams();
+  const [service] = useServiceDetail(serviceId);
+  const [user] = useAuthState(auth);
 
   const handlePlaceholder = (event) => {
-    event.preventDefault()
+    event.preventDefault();
     const orders = {
       service: service.name,
       serviceId: serviceId,
@@ -20,15 +20,17 @@ const Checkout = () => {
       email: event.target.email.value,
       address: event.target.address.value,
       phone: event.target.phone.value,
-    }
-    axios.post('http://localhost:5000/orders', orders).then((response) => {
-      const { data } = response
-      if (data.insertedId) {
-        toast('Your order is booked!!')
-        event.target.reset()
-      }
-    })
-  }
+    };
+    axios
+      .post("https://bogura-ac-corner-server.vercel.app/orders", orders)
+      .then((response) => {
+        const { data } = response;
+        if (data.insertedId) {
+          toast("Your order is booked!!");
+          event.target.reset();
+        }
+      });
+  };
 
   return (
     <div className="w-50 mx-auto">
@@ -87,7 +89,7 @@ const Checkout = () => {
         />
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default Checkout
+export default Checkout;

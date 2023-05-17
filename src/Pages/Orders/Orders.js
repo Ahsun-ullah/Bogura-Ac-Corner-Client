@@ -12,7 +12,7 @@ const Orders = () => {
   useEffect(() => {
     const getOrders = async () => {
       const email = user?.email;
-      const url = `http://localhost:5000/orders?email=${email}`;
+      const url = `https://bogura-ac-corner-server.vercel.app/orders?email=${email}`;
       try {
         const { data } = await axiosPrivate.get(url);
         setOrders(data);

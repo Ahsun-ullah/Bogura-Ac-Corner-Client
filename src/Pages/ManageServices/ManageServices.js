@@ -7,7 +7,7 @@ const ManageServices = () => {
   const handleDelete = (id) => {
     const Proceed = window.confirm("Are you sure");
     if (Proceed) {
-      const url = `http://localhost:5000/service/${id}`;
+      const url = `https://bogura-ac-corner-server.vercel.app/service/${id}`;
       fetch(url, {
         method: "DELETE",
       })
@@ -28,7 +28,12 @@ const ManageServices = () => {
             <div key={service._id}>
               <h4>
                 {service.name}{" "}
-                <button className="btn-info" onClick={() => handleDelete(service._id)}>X</button>
+                <button
+                  className="btn-info"
+                  onClick={() => handleDelete(service._id)}
+                >
+                  X
+                </button>
               </h4>
             </div>
           ))}

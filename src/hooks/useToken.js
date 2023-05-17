@@ -1,23 +1,26 @@
-import axios from 'axios'
-import { useEffect, useState } from 'react'
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 const useToken = (user) => {
-  const [token, setToken] = useState('')
+  const [token, setToken] = useState("");
   useEffect(() => {
     const getToken = async () => {
-      console.log(user)
-      const email = user?.user?.email
+      console.log(user);
+      const email = user?.user?.email;
       if (email) {
-        const { data } = await axios.post('http://localhost:5000/login', {
-          email,
-        })
-        setToken(data.accessToken)
-        localStorage.setItem('accessToken', data.accessToken)
+        const { data } = await axios.post(
+          "https://bogura-ac-corner-server.vercel.app/login",
+          {
+            email,
+          }
+        );
+        setToken(data.accessToken);
+        localStorage.setItem("accessToken", data.accessToken);
       }
-    }
-    getToken()
-  }, [user])
-  return [token]
-}
+    };
+    getToken();
+  }, [user]);
+  return [token];
+};
 
-export default useToken
+export default useToken;
